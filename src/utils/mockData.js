@@ -1,45 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const Header = () =>{
-  return (
-    <div className="header">
-      
-      <div className="logo-container">
-       <img className="logo" alt="logo" src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=food&sf=&txt_keyword=All" />
-      </div>
-
-      <div className="nav-items">
-        <ul className="nav-list">
-           <li className="home">Home</li>
-           <li className="aboutus">About Us</li>
-           <li className="contactus">Contact Us</li>
-           <li className="cart">Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) =>{
-  const {resData} = props;
-  const {name, cuisines, avgRating, costForTwo, deliveryTime, cloudinaryImageId} = resData?.info ;
-  return (
- <div className="res-card" style={{backgroundColor : "#f0f0f0"}}>
-   <img className="res-logo" 
-   alt="res-logo" 
-   src={
-  "https://dineout-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/v1661028114/" + cloudinaryImageId
-   } />
-   <h3>{name}</h3>
-   <h4>{cuisines.join(",")}</h4>
-   <h4>{avgRating} stars</h4>
-   <h4>{costForTwo}</h4>
-   <h4>{deliveryTime} minutes</h4>
- </div>
-  );
-};
-
 const resList = [
                   {
                     "info": {
@@ -55,7 +13,7 @@ const resList = [
                         "Biryani",
                         "Tandoor"
                       ],
-                      "avgRating": 4.3,
+                      "avgRating": 3.3,
                       "parentId": "27123",
                       "avgRatingString": "4.3",
                       "totalRatingsString": "1.3K+",
@@ -707,35 +665,5 @@ const resList = [
                   },
                 ];
 
-const Body = () =>{
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="btn" >
-        <input type="button" value="Search" />
-      </div>
 
-      <div className="res-container">
-         {
-           resList.map((restaurant)=>(
-            <RestaurantCard key={restaurant.info.id} resData = {restaurant} />
-           ))
-         }
-        </div>
-      </div>
-    
-  );
-};
-
-const AppLayout = () => {
-  return(
-    <div className="app">
-    <Header />
-    <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout/>);
+export default resList;
