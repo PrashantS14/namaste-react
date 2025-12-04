@@ -38,7 +38,7 @@ const Body = () =>{
         <button className="search-btn"
         onClick={()=>{
           //filtering the restaurant card and update the UI
-          const filteredRestaurants=listOfRestaurants.filter((res)=>{
+          const filteredRestaurants=listOfRestaurants.filter((res)=>{ //list of restaurant will always has the original data intact with it 
             return res.info.name.toLowerCase().includes(searchText.toLowerCase());
           })
           setFilteredRestaurants(filteredRestaurants);
