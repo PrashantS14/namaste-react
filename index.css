@@ -49,6 +49,9 @@
   width: 100%;
   height: 250px;
 }
+.filter{
+  display:flex;
+}
 .filter-btn{
   margin:10px;
   cursor:pointer;

@@ -4,7 +4,10 @@ import Shimmer from "./Shimmer";
 
 
 const Body = () =>{
+  const [searchText, setSearchText]= useState("");
+  
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   useEffect( ()=>{
    fetchData();
@@ -17,7 +20,8 @@ const Body = () =>{
     const json = await data.json();
     console.log(json);
    //optional chaining
-    setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); 
+    setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); 
   };
   
   if(listOfRestaurants.length === 0){
@@ -27,11 +31,27 @@ const Body = () =>{
   return (
     <div className="body">
      <div className="filter">
+      <div className="search">
+        
+        <input type="text" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}} />
+        
+        <button className="search-btn"
+        onClick={()=>{
+          //filtering the restaurant card and update the UI
+          const filteredRestaurants=listOfRestaurants.filter((res)=>{
+            return res.info.name.toLowerCase().includes(searchText.toLowerCase());
+          })
+          setFilteredRestaurants(filteredRestaurants);
+        }}
+        >Search
+        </button>
+      
+      </div>
       <button className="filter-btn"
       onClick={()=>{
         const filteredList = listOfRestaurants.filter((res)=>
-          res.info.avgRating > 4.5 )
-        setListOfRestaurants(filteredList);
+          res.info.avgRating > 4.4 )
+        setFilteredRestaurants(filteredList);
       }}
       >
        Top Rated Restaurants
@@ -40,7 +60,7 @@ const Body = () =>{
 
       <div className="res-container">
          {
-           listOfRestaurants.map((restaurant)=>(
+           filteredRestaurants.map((restaurant)=>(
             <RestaurantCard key={restaurant.info.id} resData = {restaurant} />
            ))
          }
