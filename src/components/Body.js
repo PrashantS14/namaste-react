@@ -20,8 +20,10 @@ const Body = () =>{
     const json = await data.json();
     console.log(json);
    //optional chaining
-    setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); 
+    const restaurantList = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+    
+    setListOfRestaurants(restaurantList);
+    setFilteredRestaurants(restaurantList); 
   };
   
   if(listOfRestaurants.length === 0){
@@ -38,6 +40,7 @@ const Body = () =>{
         <button className="search-btn"
         onClick={()=>{
           //filtering the restaurant card and update the UI
+          
           const filteredRestaurants=listOfRestaurants.filter((res)=>{ //list of restaurant will always has the original data intact with it 
             return res.info.name.toLowerCase().includes(searchText.toLowerCase());
           })
@@ -71,3 +74,4 @@ const Body = () =>{
 };
 
 export default Body;
+
