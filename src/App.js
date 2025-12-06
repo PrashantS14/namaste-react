@@ -17,6 +17,8 @@ const AppLayout = () => {
     </div>
   );
 };
+
+// Router configuration
  const appRouter = createBrowserRouter([
   {
     path: "/",

@@ -1,30 +1,46 @@
-import {useEffect} from "react";
+import { useParams } from "react-router-dom";
+import { menuData } from "../utils/mockMenu";
 
 const RestaurantMenu = () => {
+  const { resId } = useParams();
+
   
-useEffect(()=>{
-  fetchMenu();
-},[]);
 
-const fetchMenu = async () => {
-  const data = await fetch("https://corsproxy.io/?url=https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.4713887&lng=77.5074813&restaurantId=78041&catalog_qa=undefined&submitAction=ENTER");
+  // Restaurant Details
+  const restaurantInfo =
+    menuData?.data?.cards?.[2]?.card?.card?.info || {};
 
-  const json = await data.json();
-  
-  console.log(json);
+  // Menu items from all categories
+  const menuCards =
+    menuData?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
 
+  const itemCategories = menuCards
+    .map((c) => c.card?.card)
+    .filter((c) => c?.itemCards);
 
-}
   return (
     <div className="menu">
-      <h1>Restaurant Name</h1>
-      <h2>Menu
-        <ul>
-          <li>Biriani</li>
-          <li>Dosa</li>
-        </ul>
-      </h2>
+      <h1>{restaurantInfo.name}</h1>
+      <h3>{restaurantInfo.cuisines?.join(", ")}</h3>
+      <h4>{restaurantInfo.costForTwoMessage}</h4>
+
+      <hr />
+
+      {itemCategories.map((category) => (
+        <div key={category.title} className="menu-category">
+          <h2>🍽 {category.title}</h2>
+
+          <ul>
+            {category.itemCards.map((item) => (
+              <li key={item.card.info.id}>
+                {item.card.info.name} — ₹{item.card.info.price / 100}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 };
+
 export default RestaurantMenu;

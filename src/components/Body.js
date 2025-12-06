@@ -1,6 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
+import { resList } from "../utils/mockData"; 
+import { Link } from "react-router-dom";
 
 
 const Body = () =>{
@@ -15,12 +17,9 @@ const Body = () =>{
   []);
   
   const fetchData = async ()=>{
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.4717161&lng=77.5080772&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+   
+   const restaurantList =  resList?.[0]?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
 
-    const json = await data.json();
-    console.log(json);
-   //optional chaining
-    const restaurantList = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
     
     setListOfRestaurants(restaurantList);
     setFilteredRestaurants(restaurantList); 
@@ -33,9 +32,10 @@ const Body = () =>{
   return (
     <div className="body">
      <div className="filter">
+      
       <div className="search">
-        
-        <input type="text" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}} />
+        <input type="text" value={searchText} placeholder="Search Restaurants..."
+        onChange={(e)=>{setSearchText(e.target.value)}} />
         
         <button className="search-btn"
         onClick={()=>{
@@ -50,6 +50,7 @@ const Body = () =>{
         </button>
       
       </div>
+      
       <button className="filter-btn"
       onClick={()=>{
         const filteredList = listOfRestaurants.filter((res)=>
@@ -64,7 +65,14 @@ const Body = () =>{
       <div className="res-container">
          {
            filteredRestaurants.map((restaurant)=>(
-            <RestaurantCard key={restaurant.info.id} resData = {restaurant} />
+            
+            <Link 
+            to={`/restaurants/${restaurant.info.id}`}  // Dynamic routing working now
+            key={restaurant.info.id} >
+            <RestaurantCard resData={restaurant} />
+          
+          </Link>
+
            ))
          }
         </div>
