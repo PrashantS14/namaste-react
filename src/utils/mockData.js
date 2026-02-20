@@ -48,13 +48,13 @@ export const resList = [{
                         "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/18/15802be3-6bb4-4c92-b094-0ffb69658b40_78041.jpg",
                         "locality": "Park Street",
                         "areaName": "Downtown",
-                        "costForTwo": "₹300 for two",
+                        "costForTwo": "₹120 for two",
                         "cuisines": [
                           "Burgers",
                           "American",
                           "Fast Food"
                         ],
-                        "avgRating": 4.5,
+                        "avgRating": 3.7,
                         "avgRatingString": "4.5",
                         "totalRatingsString": "15K+ ratings",
                         "veg": false,
@@ -140,7 +140,7 @@ export const resList = [{
                           "Asian",
                           "Thai"
                         ],
-                        "avgRating": 4.4,
+                        "avgRating": 3.7,
                         "avgRatingString": "4.4",
                         "totalRatingsString": "9K+ ratings",
                         "veg": false,
@@ -165,11 +165,11 @@ export const resList = [{
                         "costForTwo": "₹200 for two",
                         "cuisines": [
                           "North Indian",
-                          "Barbecue",
+                          "Barbeque",
                           "Kebabs",
                           "Biryani",
                         ],
-                        "avgRating": 4.6,
+                        "avgRating": 4.4,
                         "avgRatingString": "4.6",
                         "totalRatingsString": "7K+ ratings",
                         "veg": true,

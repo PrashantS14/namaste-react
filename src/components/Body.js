@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 const Body = () =>{
+  
   const [searchText, setSearchText]= useState("");
   
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
