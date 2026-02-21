@@ -12,6 +12,7 @@ const RestaurantMenu = () => {
 
   return (
     <div className="menu">
+      
       <h1>{restaurant.info.name}</h1>
       <h3>{restaurant.info.cuisines.join(", ")}</h3>
       <h4>{restaurant.info.costForTwo}</h4>
