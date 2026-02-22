@@ -18,9 +18,16 @@ export const menuData = {
         ]
       },
       {
-        title: "Specialty Pizzas",
+        title: "Specialty",
         items: [
           { id: "p5", name: "BBQ Chicken Pizza", price: 449 }
+        ]
+      },
+      {
+        title: "Drinks",
+        items: [
+          { id: "p6", name: "Coke", price: 49 },
+          { id: "p7", name: "Diet Coke", price: 99 } 
         ]
       }
     ]

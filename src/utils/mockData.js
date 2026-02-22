@@ -21,6 +21,7 @@ export const resList = [{
                         "locality": "MG Road",
                         "areaName": "Central District",
                         "costForTwo": "₹400 for two",
+                        "promoted": true,
                         "cuisines": [
                           "Pizza",
                           "Italian",
@@ -49,6 +50,7 @@ export const resList = [{
                         "locality": "Park Street",
                         "areaName": "Downtown",
                         "costForTwo": "₹120 for two",
+                        "promoted": false,
                         "cuisines": [
                           "Burgers",
                           "American",
@@ -77,6 +79,7 @@ export const resList = [{
                         "locality": "Residency Road",
                         "areaName": "South Zone",
                         "costForTwo": "₹250 for two",
+                        "promoted": false,
                         "cuisines": [
                           "Momos",
                            "Chinese",
@@ -107,6 +110,7 @@ export const resList = [{
                         "locality": "Brigade Road",
                         "areaName": "City Center",
                         "costForTwo": "₹500 for two",
+                        "promoted": true,
                         "cuisines": [
                           "Indian",
                           "North Indian",
@@ -135,6 +139,7 @@ export const resList = [{
                         "locality": "Commercial Street",
                         "areaName": "East District",
                         "costForTwo": "₹350 for two",
+                        "promoted": false,
                         "cuisines": [
                           "Chinese",
                           "Asian",
@@ -163,6 +168,7 @@ export const resList = [{
                         "locality": "Lavelle Road",
                         "areaName": "West End",
                         "costForTwo": "₹200 for two",
+                        "promoted": false,
                         "cuisines": [
                           "North Indian",
                           "Barbeque",
@@ -192,6 +198,7 @@ export const resList = [{
                         "locality": "Indiranagar",
                         "areaName": "Uptown",
                         "costForTwo": "₹800 for two",
+                        "promoted": true,
                         "cuisines": [
                           "Biryani",
                           " Hyderabadi",
@@ -221,6 +228,7 @@ export const resList = [{
                         "locality": "Jayanagar",
                         "areaName": "South Bangalore",
                         "costForTwo": "₹300 for two",
+                        "promoted": false,
                         "cuisines": [
                           "Desserts",
                           "Ice Cream",
@@ -250,6 +258,7 @@ export const resList = [{
                         "locality": "Koramangala",
                         "areaName": "Tech Hub",
                         "costForTwo": "₹450 for two",
+                        "promoted": true,
                         "cuisines": [
                           "Italian",
                           "Pasta",

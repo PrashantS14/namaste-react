@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
 import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
 import { resList } from "../utils/mockData"; 
@@ -12,6 +12,8 @@ const Body = () =>{
   
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect( ()=>{
    fetchData();
@@ -44,13 +46,15 @@ const Body = () =>{
   
   return (
     <div className="body">
-     <div className="filter">
+     <div className="filter flex">
       
-      <div className="search">
-        <input type="text" value={searchText} placeholder="Search Restaurants..."
+      <div className="search p-4 m-4 flex items-center gap-5">
+        <input type="text" className="border border-blue-200 rounded-md px-2 py-1 w-64 focus:outline-none focus:ring-2 focus:ring-blue-300" 
+        value={searchText} 
+        placeholder="Search Restaurants..."
         onChange={(e)=>{setSearchText(e.target.value)}} />
         
-        <button className="search-btn"
+        <button className="px-4 py-2 bg-cyan-100 rounded-lg hover:bg-cyan-300"
         onClick={()=>{
           //filtering the restaurant card and update the UI
           
@@ -64,7 +68,8 @@ const Body = () =>{
       
       </div>
       
-      <button className="filter-btn"
+     <div className="p-4 m-4 flex items-center">
+       <button className=" px-4 py-2 bg-green-100 rounded-lg hover:bg-green-300"
       onClick={()=>{
         const filteredList = listOfRestaurants.filter((res)=>
           res.info.avgRating > 4.4 )
@@ -74,15 +79,24 @@ const Body = () =>{
        Top Rated Restaurants
       </button>
      </div>
+     </div>
 
-      <div className="res-container">
+      <div className="flex flex-wrap">
          {
            filteredRestaurants.map((restaurant)=>(
             
             <Link 
             to={`/restaurants/${restaurant.info.id}`}  // Dynamic routing working now
             key={restaurant.info.id} >
-            <RestaurantCard resData={restaurant} />
+
+              {
+                restaurant.info.promoted ? (
+                <RestaurantCardPromoted resData={restaurant}/>) : 
+                (
+                <RestaurantCard resData={restaurant} />
+              )
+              }
+           
           
           </Link>
 

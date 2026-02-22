@@ -13,19 +13,19 @@ const RestaurantMenu = () => {
   return (
     <div className="menu">
       
-      <h1>{restaurant.info.name}</h1>
-      <h3>{restaurant.info.cuisines.join(", ")}</h3>
-      <h4>{restaurant.info.costForTwo}</h4>
+      <h1 className="m-2 p-2 font-bold text-3xl shadow">{restaurant.info.name}</h1>
+      <h3 className="m-2 p-2 font-bold text-xl" >{restaurant.info.cuisines.join(", ")}</h3>
+      <h4 className="m-2 p-2 font-bold ">{restaurant.info.costForTwo}</h4>
 
       <hr />
 
       {restaurant.categories.map((category) => (
         <div key={category.title} className="menu-category">
-          <h2>🍽 {category.title}</h2>
+          <h2 className="m-2 font-bold text-xl">🍽 {category.title}</h2>
 
-          <ul>
+          <ul className="list-disc">
             {category.items.map((item) => (
-              <li key={item.id}>
+              <li className="mx-10 p-2" key={item.id}>
                 {item.name} — ₹{item.price}
               </li>
             ))}
