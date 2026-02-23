@@ -1,4 +1,5 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense,} from "react";
+import {useState, useEffect} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,15 +8,29 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
+import UserContext from "./utils/UserContext";
 
 const Grocery = lazy(() => import("./components/Grocery") ); // if i have to write it using the curly braces then i must have to use the return keyword explicitely because this is an arrow function.
 
+
 const AppLayout = () => {
+
+const [userName, setUserName] = useState("");
+
+useEffect(()=>{
+  const data = {
+    name : "Prashant Singh"
+  }
+  setUserName(data.name);
+}, []);
+
   return(
+    <UserContext.Provider value ={{loggedInUser:userName , setUserName}}>
     <div className="app">
     <Header />
     <Outlet />
     </div>
+    </UserContext.Provider>
   );
 };
 

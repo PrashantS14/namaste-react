@@ -10,7 +10,7 @@ const Header = () =>{
   
   const [btnName, setBtnName] = useState("Login");
 
-  const {loggedInUser } = useContext(UserContext);
+  const {loggedInUser } = useContext(UserContext); //doing destructure because the data comes in                      form of object so to extract normally we have to use: data.loggedInUser
   
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg ">
