@@ -20,13 +20,14 @@ const RestaurantMenu = () => {
       <hr />
 
       {restaurant.categories.map((category) => (
-        <div key={category.title} className="menu-category">
+        <div key={category.title} >
           <h2 className="m-2 font-bold text-xl">🍽 {category.title}</h2>
 
-          <ul className="list-disc">
+          <ul >
             {category.items.map((item) => (
-              <li className="mx-10 p-2" key={item.id}>
+              <li className="mx-10 p-2 " key={item.id}>
                 {item.name} — ₹{item.price}
+                <button className="border bg-blue-300 rounded-md p-1">Add +</button>
               </li>
             ))}
           </ul>
