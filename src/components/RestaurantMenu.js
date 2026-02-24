@@ -27,7 +27,7 @@ const RestaurantMenu = () => {
             {category.items.map((item) => (
               <li className="mx-10 p-2 " key={item.id}>
                 {item.name} — ₹{item.price}
-                <button className="border bg-blue-300 rounded-md p-1">Add +</button>
+                <button className="border bg-blue-300 rounded-md p-1">Add +</button> {/*added*/}
               </li>
             ))}
           </ul>
