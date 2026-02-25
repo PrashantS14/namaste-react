@@ -8,8 +8,8 @@ const RestaurantMenu = () => {
 
   if (!restaurant) {
     return <h1>Restaurant Not Found</h1>;
-  }
-//have to add
+  }//
+
   return (
     <div className="menu">
       
